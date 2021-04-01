@@ -3,7 +3,7 @@ name: Linter-ESLint
 on: [pull_request, workflow_dispatch]
 
 jobs:
-  lint-client:
+  linter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
