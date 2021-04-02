@@ -32,15 +32,15 @@ const Dashboard = ({ children }) => {
       >
         <Stack spacing={2} isInline ml={2} alignItems="center">
           <AddIcon m={2} />
-          <Link m={2} p={2} fontSize="16px">
+          <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Feedback
           </Link>
-          <Link p={2} m={2} fontSize="16px">
+          <Link p={2} m={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Sites
           </Link>
         </Stack>
         <Flex mr={2} alignItems="center">
-          <Link m={2} p={2} fontSize="16px">
+          <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Account
           </Link>
           <Popover>
@@ -53,7 +53,7 @@ const Dashboard = ({ children }) => {
                 <PopoverHeader>{`Hey there! ${auth.user?.name}`}</PopoverHeader>
                 <PopoverCloseButton />
                 <PopoverBody>
-                  <Button onClick={() => auth.signout()} colorScheme="blue">
+                  <Button onClick={() => auth.signout()} colorScheme="cyan">
                     Sign Out
                   </Button>
                 </PopoverBody>
@@ -67,6 +67,7 @@ const Dashboard = ({ children }) => {
         justifyContent="flex-start"
         flexDirection="column"
         backgroundColor="gray.100"
+        pb={'80%'}
       >
         <Heading m={2}>Your Saved Sites</Heading>
         {children}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, Box, Text, Button } from '@chakra-ui/react';
 import Dashboard from './DashboardShell';
+import AddSiteModal from './AddSiteModal';
 
 const Sites = () => {
   return (
@@ -18,15 +19,7 @@ const Sites = () => {
           You haven't added any sites
         </Heading>
         <Text>Add Your First Site</Text>
-        <Button
-          variant="solid"
-          size="md"
-          backgroundColor="gray.700"
-          color="white"
-          mt={4}
-        >
-          Add new site
-        </Button>
+        <AddSiteModal />
       </Box>
     </Dashboard>
   );
