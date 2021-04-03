@@ -18,8 +18,8 @@ import {
 import { AddIcon } from '@chakra-ui/icons';
 import { useAuth } from '../lib/auth';
 
-const Dashboard = ({ children }) => {
-  const auth = useAuth();
+const DashboardShell = ({ children }) => {
+  const { user, signout } = useAuth();
   return (
     <Flex flexDirection="column" backgroundColor="white">
       <Flex
@@ -43,23 +43,25 @@ const Dashboard = ({ children }) => {
           <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Account
           </Link>
-          <Popover>
-            <PopoverTrigger>
-              <Avatar size="md" m={2} src={auth.user.photoUrl} />
-            </PopoverTrigger>
-            <Portal>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverHeader>{`Hey there! ${auth.user?.name}`}</PopoverHeader>
-                <PopoverCloseButton />
-                <PopoverBody>
-                  <Button onClick={() => auth.signout()} colorScheme="cyan">
-                    Sign Out
-                  </Button>
-                </PopoverBody>
-              </PopoverContent>
-            </Portal>
-          </Popover>
+          {user && (
+            <Popover>
+              <PopoverTrigger>
+                <Avatar size="md" m={2} src={user?.photoUrl} />
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverHeader>{`Hey there! ${user?.name}`}</PopoverHeader>
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    <Button onClick={() => signout()} colorScheme="cyan">
+                      Sign Out
+                    </Button>
+                  </PopoverBody>
+                </PopoverContent>
+              </Portal>
+            </Popover>
+          )}
         </Flex>
       </Flex>
       <Flex
@@ -76,4 +78,4 @@ const Dashboard = ({ children }) => {
   );
 };
 
-export default Dashboard;
+export default DashboardShell;

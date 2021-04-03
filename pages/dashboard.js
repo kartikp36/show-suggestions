@@ -1,10 +1,14 @@
 import { useAuth } from '../lib/auth';
 import Sites from '../components/Sites';
+import SiteTableSkeleton from '../components/SiteTableSkeleton';
+import DashboardShell from '../components/DashboardShell';
+
 const Dashboard = () => {
   const auth = useAuth();
-  if (!auth.user) {
-    return 'Loading...';
-  }
-  return <Sites />;
+  return (
+    <DashboardShell>
+      {!auth.user ? <SiteTableSkeleton /> : <Sites />}
+    </DashboardShell>
+  );
 };
 export default Dashboard;
