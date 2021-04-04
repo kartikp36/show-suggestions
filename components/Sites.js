@@ -17,7 +17,7 @@ const Sites = () => {
         {`You haven't added any sites`}
       </Heading>
       <Text>Add Your First Site</Text>
-      <AddSiteModal />
+      <AddSiteModal>Add new site</AddSiteModal>
     </Box>
   );
 };

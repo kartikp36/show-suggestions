@@ -14,6 +14,7 @@ import {
   PopoverHeader,
   PopoverCloseButton,
   PopoverBody,
+  Text,
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useAuth } from '../lib/auth';
@@ -70,6 +71,8 @@ const DashboardShell = ({ children }) => {
         flexDirection="column"
         backgroundColor="gray.100"
         pb={'80%'}
+        pl={'16%'}
+        pr={'16%'}
       >
         <Heading m={2}>Your Saved Sites</Heading>
         {children}
