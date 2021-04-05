@@ -29,12 +29,13 @@ const AddSiteModal = ({ children }) => {
   const { handleSubmit, register } = useForm();
 
   const onAddSite = ({ name, url }) => {
-    createSite({
+    const newSite = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
       url,
-    });
+    };
+    createSite(newSite);
 
     toast({
       title: 'Success',
@@ -43,7 +44,13 @@ const AddSiteModal = ({ children }) => {
       duration: 4000,
       isClosable: true,
     });
-    mutate('/api/sites');
+    mutate(
+      '/api/sites',
+      async (data) => {
+        return { sites: [...data.sites, newSite] };
+      },
+      false
+    );
     onClose();
   };
   return (

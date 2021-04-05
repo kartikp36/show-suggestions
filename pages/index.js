@@ -1,11 +1,11 @@
-import { Button, Link } from '@chakra-ui/react';
+import { Button, Link, Heading } from '@chakra-ui/react';
 import { useAuth } from '../lib/auth';
 export default function Home() {
   const auth = useAuth();
   return (
     <div>
-      <main>
-        <h1>Fast Feedback</h1>
+      <main style={{ textAlign: 'center', margin: '8px' }}>
+        <Heading>Fast Feedback</Heading>
         {!auth?.user ? (
           <Button onClick={() => auth.signinWithGithub()}>Sign In</Button>
         ) : (
