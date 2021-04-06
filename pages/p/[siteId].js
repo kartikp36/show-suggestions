@@ -25,8 +25,9 @@ export const getStaticPaths = async () => {
   const paths = sites.map((site) => ({
     params: { siteId: site.id.toString() },
   }));
+
   return {
-    paths,
+    paths: paths,
     fallback: false,
   };
 };
