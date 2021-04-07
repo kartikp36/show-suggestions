@@ -1,4 +1,5 @@
 import React from 'react';
+import NextLink from 'next/link';
 import {
   Flex,
   Link,
@@ -33,12 +34,24 @@ const DashboardShell = ({ children }) => {
       >
         <Stack spacing={2} isInline ml={2} alignItems="center">
           <AddIcon m={2} />
-          <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
-            Feedback
-          </Link>
-          <Link p={2} m={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
-            Sites
-          </Link>
+          <NextLink href="/dashboard " passHref>
+            <Link
+              p={2}
+              m={2}
+              fontSize={{ base: '12px', md: '16px', lg: '16px' }}
+            >
+              Sites
+            </Link>
+          </NextLink>
+          <NextLink href="/feedback" passHref>
+            <Link
+              m={2}
+              p={2}
+              fontSize={{ base: '12px', md: '16px', lg: '16px' }}
+            >
+              Feedback
+            </Link>
+          </NextLink>
         </Stack>
         <Flex mr={2} alignItems="center">
           <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
@@ -75,7 +88,6 @@ const DashboardShell = ({ children }) => {
         pl={'16%'}
         pr={'16%'}
       >
-        <Heading m={2}>Your Saved Sites</Heading>
         {children}
       </Flex>
     </Flex>

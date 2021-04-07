@@ -10,17 +10,18 @@ import { getAllFeedback, getAllSites } from '../../lib/db-admin';
 import { createFeedback } from '../../lib/database';
 import { useAuth } from '../../lib/auth';
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const siteId = context.params.siteId;
   const { feedback } = await getAllFeedback(siteId);
   return {
     props: {
       initialFeedback: feedback,
     },
+    revalidate: 1,
   };
-};
+}
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const { sites } = await getAllSites();
   const paths = sites.map((site) => ({
     params: { siteId: site.id.toString() },
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
     paths: paths,
     fallback: false,
   };
-};
+}
 
 const SiteFeedback = ({ initialFeedback }) => {
   const auth = useAuth();

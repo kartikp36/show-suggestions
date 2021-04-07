@@ -1,21 +1,20 @@
 import useSWR from 'swr';
 
-import Sites from '../components/Sites';
 import SiteTableSkeleton from '../components/SiteTableSkeleton';
 import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
-import SiteTable from '../components/SiteTable';
+import FeedbackTable from '../components/FeedbackTable';
 import { useAuth } from '../lib/auth';
 import { Heading } from '@chakra-ui/layout';
 
-const Dashboard = () => {
+const MyFeedback = () => {
   const { user } = useAuth();
-  const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher);
+  const { data } = useSWR(user ? ['/api/feedback', user.token] : null, fetcher);
 
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Saved Sites</Heading>
+        <Heading m={2}>Your Feedbacks</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
@@ -23,9 +22,9 @@ const Dashboard = () => {
 
   return (
     <DashboardShell>
-      <Heading m={2}>Your Saved Sites</Heading>
-      {data.sites ? <SiteTable sites={data.sites} /> : <Sites />}
+      <Heading m={2}>Your Feedbacks</Heading>
+      {data.feedback ? <FeedbackTable allFeedback={data.feedback} /> : null}
     </DashboardShell>
   );
 };
-export default Dashboard;
+export default MyFeedback;
