@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { Button } from '@chakra-ui/button';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
@@ -77,3 +78,7 @@ const SiteFeedback = ({ initialFeedback }) => {
   );
 };
 export default SiteFeedback;
+
+SiteFeedback.propTypes = {
+  initialFeedback: PropTypes.array,
+};

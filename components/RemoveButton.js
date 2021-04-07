@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { DeleteIcon } from '@chakra-ui/icons';
 import {
   AlertDialog,
@@ -11,6 +12,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { mutate } from 'swr';
+
 import { deleteFeedback } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
@@ -75,3 +77,7 @@ function RemoveButton({ feedbackId }) {
   );
 }
 export default RemoveButton;
+
+RemoveButton.propTypes = {
+  feedbackId: PropTypes.string,
+};

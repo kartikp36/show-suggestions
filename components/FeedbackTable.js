@@ -1,15 +1,14 @@
-import { Box, Code, Link } from '@chakra-ui/layout';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Box, Code } from '@chakra-ui/layout';
 import { Table, Td, Th, Tr } from './Table';
-import AddSiteModal from './AddSiteModal';
-import { IconButton, Switch } from '@chakra-ui/react';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { Switch } from '@chakra-ui/react';
+
 import RemoveButton from './RemoveButton';
 
 const FeedbackTable = ({ allFeedback }) => {
   return (
     <>
-      <AddSiteModal>Add Sites</AddSiteModal>
       <Table>
         <thead>
           <Tr>
@@ -47,3 +46,7 @@ const FeedbackTable = ({ allFeedback }) => {
 };
 
 export default FeedbackTable;
+
+FeedbackTable.propTypes = {
+  allFeedback: PropTypes.array,
+};

@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import {
   Flex,
   Link,
   Stack,
   Avatar,
-  Heading,
   Button,
   Popover,
   PopoverTrigger,
@@ -15,9 +15,9 @@ import {
   PopoverHeader,
   PopoverCloseButton,
   PopoverBody,
-  Text,
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
+
 import { useAuth } from '../lib/auth';
 
 const DashboardShell = ({ children }) => {
@@ -95,3 +95,7 @@ const DashboardShell = ({ children }) => {
 };
 
 export default DashboardShell;
+
+DashboardShell.propTypes = {
+  children: PropTypes.node,
+};

@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { Heading } from '@chakra-ui/layout';
 
 import Sites from '../components/Sites';
 import SiteTableSkeleton from '../components/SiteTableSkeleton';
@@ -6,7 +7,6 @@ import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
 import SiteTable from '../components/SiteTable';
 import { useAuth } from '../lib/auth';
-import { Heading } from '@chakra-ui/layout';
 
 const Dashboard = () => {
   const { user } = useAuth();

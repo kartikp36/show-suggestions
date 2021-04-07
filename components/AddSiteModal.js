@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 import {
@@ -16,8 +17,8 @@ import {
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
-import { createSite } from '../lib/database';
 
+import { createSite } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
 const AddSiteModal = ({ children }) => {
@@ -109,3 +110,7 @@ const AddSiteModal = ({ children }) => {
 };
 
 export default AddSiteModal;
+
+AddSiteModal.propTypes = {
+  children: PropTypes.node,
+};

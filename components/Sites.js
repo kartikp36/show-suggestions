@@ -1,5 +1,6 @@
 import React from 'react';
-import { Heading, Box, Text, Button } from '@chakra-ui/react';
+import { Heading, Box, Text } from '@chakra-ui/react';
+
 import AddSiteModal from './AddSiteModal';
 
 const Sites = () => {

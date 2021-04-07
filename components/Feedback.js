@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Divider,
-  Icon,
-  Flex,
-  Code,
-} from '@chakra-ui/react';
+import PropTypes from 'prop-types';
+import { Box, Heading, Text, Divider, Flex } from '@chakra-ui/react';
 import { format, parseISO } from 'date-fns';
 
 const Feedback = ({ author, text, createdAt }) => {
@@ -28,3 +21,9 @@ const Feedback = ({ author, text, createdAt }) => {
 };
 
 export default Feedback;
+
+Feedback.propTypes = {
+  author: PropTypes.string,
+  text: PropTypes.string,
+  createdAt: PropTypes.string,
+};

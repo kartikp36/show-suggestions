@@ -1,7 +1,9 @@
 import NextLink from 'next/link';
+import PropTypes from 'prop-types';
 import { Box, Link } from '@chakra-ui/layout';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
+
 import { Table, Td, Th, Tr } from './Table';
 import AddSiteModal from './AddSiteModal';
 
@@ -43,3 +45,7 @@ const SiteTable = ({ sites }) => {
 };
 
 export default SiteTable;
+
+SiteTable.propTypes = {
+  sites: PropTypes.array,
+};

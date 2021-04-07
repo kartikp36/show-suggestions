@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Skeleton } from '@chakra-ui/react';
+
 import { Table, Td, Th, Tr } from './Table';
 
 const SkeletonRow = ({ width }) => (
@@ -43,3 +45,7 @@ const SiteTableSkeleton = () => {
 };
 
 export default SiteTableSkeleton;
+
+SkeletonRow.propTypes = {
+  width: PropTypes.string,
+};
