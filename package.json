@@ -9,10 +9,20 @@
     "test": "eslint ."
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.8",
+    "@chakra-ui/react": "^1.4.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "date-fns": "^2.19.0",
     "firebase": "^8.3.2",
+    "firebase-admin": "^9.6.0",
+    "framer-motion": "^4",
+    "js-cookie": "^2.2.1",
     "next": "10.0.5",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-hook-form": "^7.0.0",
+    "swr": "^0.5.5"
   },
   "devDependencies": {
     "eslint": "^7.18.0",

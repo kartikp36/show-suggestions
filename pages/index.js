@@ -1,25 +1,30 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import { Button, Link, Heading } from '@chakra-ui/react';
+
 import { useAuth } from '../lib/auth';
 export default function Home() {
   const auth = useAuth();
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Fast Feedback</title>
-        <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
+            window.location.href = "/dashboard"
+          }
+        `,
+          }}
+        />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Fast Feedback</h1>
-        <button onClick={() => auth.signinWithGithub()}>Sign In</button>
-        <div>{auth?.user?.email}</div>
-        {auth?.user && <button onClick={() => auth.signout()}>Sign Out</button>}
+      <main style={{ textAlign: 'center', margin: '8px' }}>
+        <Heading>Fast Feedback</Heading>
+        {!auth?.user ? (
+          <Button onClick={() => auth.signinWithGithub()}>Sign In</Button>
+        ) : (
+          <Link href="/dashboard">View Dashboard</Link>
+        )}
       </main>
-
-      <footer className={styles.footer}>
-        Fast Feedback demo - Lee Robinson
-      </footer>
     </div>
   );
 }
