@@ -57,7 +57,17 @@ const DashboardShell = ({ children }) => {
           <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Account
           </Link>
-          {!user && <Button onClick={() => signinWithGithub()}>Sign In</Button>}
+          {!user && (
+            <NextLink href="/" passHref>
+              <Link
+                m={2}
+                p={2}
+                fontSize={{ base: '12px', md: '16px', lg: '16px' }}
+              >
+                Sign In
+              </Link>
+            </NextLink>
+          )}
           {user && (
             <Popover>
               <PopoverTrigger>

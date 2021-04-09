@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Link, Heading } from '@chakra-ui/react';
+import { Button, Link, Heading, Stack } from '@chakra-ui/react';
 
 import { useAuth } from '../lib/auth';
 export default function Home() {
@@ -20,9 +20,43 @@ export default function Home() {
       <main style={{ textAlign: 'center', margin: '8px' }}>
         <Heading>Fast Feedback</Heading>
         {!auth?.user ? (
-          <Button onClick={() => auth.signinWithGithub()}>Sign In</Button>
+          <Stack mt="4" alignItems="center">
+            <Button
+              w="20%"
+              backgroundColor="white"
+              color="gray.900"
+              fontWeight="medium"
+              size="lg"
+              _hover={{ bg: 'gray.100' }}
+              onClick={() => auth.signinWithGoogle()}
+            >
+              Sign In with Google
+            </Button>
+            <Button
+              w="20%"
+              backgroundColor="gray.900"
+              color="white"
+              fontWeight="medium"
+              size="lg"
+              _hover={{ bg: 'gray.700' }}
+              onClick={() => auth.signinWithGithub()}
+            >
+              Sign In with GitHub
+            </Button>
+          </Stack>
         ) : (
-          <Link href="/dashboard">View Dashboard</Link>
+          <Button
+            as="a"
+            href="/dashboard"
+            w="20%"
+            backgroundColor="white"
+            color="gray.900"
+            fontWeight="medium"
+            size="lg"
+            _hover={{ bg: 'gray.100' }}
+          >
+            View Dashboard
+          </Button>
         )}
       </main>
     </div>
