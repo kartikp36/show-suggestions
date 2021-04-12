@@ -1,11 +1,11 @@
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
 
-import SiteTableSkeleton from '../components/SiteTableSkeleton';
-import DashboardShell from '../components/DashboardShell';
-import fetcher from '../utils/fetcher';
-import FeedbackTable from '../components/FeedbackTable';
-import { useAuth } from '../lib/auth';
+import SiteTableSkeleton from '../../components/SiteTableSkeleton';
+import DashboardShell from '../../components/DashboardShell';
+import fetcher from '../../utils/fetcher';
+import FeedbackTable from '../../components/FeedbackTable';
+import { useAuth } from '../../lib/auth';
 
 const Feedback = () => {
   const { user } = useAuth();
