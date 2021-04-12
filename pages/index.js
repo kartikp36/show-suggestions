@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Link, Heading, Stack } from '@chakra-ui/react';
+import { Button, Heading, Stack } from '@chakra-ui/react';
 
 import { useAuth } from '../lib/auth';
 export default function Home() {

@@ -21,7 +21,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { useAuth } from '../lib/auth';
 
 const DashboardShell = ({ children }) => {
-  const { user, signout, signinWithGithub } = useAuth();
+  const { user, signout } = useAuth();
   return (
     <Flex flexDirection="column" backgroundColor="white">
       <Flex

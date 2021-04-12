@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Code } from '@chakra-ui/layout';
-import { Table, Td, Th, Tr } from './Table';
-import { Switch } from '@chakra-ui/react';
+import { Table, Th, Tr } from './Table';
 
-import RemoveButton from './RemoveButton';
+import FeedbackRow from './FeedbackRow';
+import { Box } from '@chakra-ui/layout';
 
 const FeedbackTable = ({ allFeedback }) => {
   return (
-    <>
-      <Table>
+    <Box overflowX="scroll">
+      <Table w="full">
         <thead>
           <Tr>
             <Th>Name</Th>
@@ -20,28 +19,12 @@ const FeedbackTable = ({ allFeedback }) => {
           </Tr>
         </thead>
         <tbody>
-          {allFeedback.map((feedback) => {
-            return (
-              <Box as="tr" key={feedback.id}>
-                <Td fontWeight="medium">{feedback.name} </Td>
-                <Td>{feedback.text} </Td>
-                <Td>
-                  <Code>{'/'}</Code>
-                </Td>
-                <Switch
-                  colorScheme="green"
-                  mt={4}
-                  defaultIsChecked={feedback.status == 'active'}
-                />
-                <Td>
-                  <RemoveButton feedbackId={feedback.id} />
-                </Td>
-              </Box>
-            );
-          })}
+          {allFeedback.map((feedback) => (
+            <FeedbackRow key={feedback.id} {...feedback} />
+          ))}
         </tbody>
       </Table>
-    </>
+    </Box>
   );
 };
 

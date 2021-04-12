@@ -6,9 +6,8 @@ import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
 import FeedbackTable from '../components/FeedbackTable';
 import { useAuth } from '../lib/auth';
-import Page from '../components/Page';
 
-const MyFeedback = () => {
+const Feedback = () => {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['/api/feedback', user.token] : null, fetcher);
 
@@ -28,10 +27,4 @@ const MyFeedback = () => {
     </DashboardShell>
   );
 };
-const MyFeedbackPage = () => (
-  <Page name="Feedback" path="/feedback">
-    <MyFeedback />
-  </Page>
-);
-
-export default MyFeedbackPage;
+export default Feedback;
