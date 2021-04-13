@@ -5,16 +5,17 @@ import { Td } from './Table';
 import { Switch } from '@chakra-ui/react';
 import { mutate } from 'swr';
 
-import RemoveButton from './RemoveButton';
+import RemoveFeedbackButton from './RemoveFeedbackButton';
 import { updateFeedback } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
 const FeedbackRow = ({ id, author, text, status, route }) => {
-  const [checked, setChecked] = useState(status == 'active');
+  const isChecked = status === 'active';
   const auth = useAuth();
 
-  const toggleFeedback = async () => {
-    await updateFeedback(id, { status: !checked ? 'active' : 'pending' });
+  const toggleFeedback = async (e) => {
+    e.preventDefault();
+    await updateFeedback(id, { status: isChecked ? 'pending' : 'active' });
     mutate(['/api/feedback', auth.user.token]);
   };
 
@@ -29,10 +30,10 @@ const FeedbackRow = ({ id, author, text, status, route }) => {
         colorScheme="green"
         mt={4}
         onChange={toggleFeedback}
-        isChecked={status == 'active'}
+        isChecked={isChecked}
       />
       <Td>
-        <RemoveButton feedbackId={id} />
+        <RemoveFeedbackButton feedbackId={id} />
       </Td>
     </Box>
   );

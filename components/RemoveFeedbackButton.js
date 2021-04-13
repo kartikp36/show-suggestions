@@ -16,7 +16,7 @@ import { mutate } from 'swr';
 import { deleteFeedback } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
-function RemoveButton({ feedbackId }) {
+function RemoveFeedbackButton({ feedbackId }) {
   const auth = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
@@ -66,7 +66,12 @@ function RemoveButton({ feedbackId }) {
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme="red" onClick={onDelete} ml={3}>
+              <Button
+                fontWeight="medium"
+                colorScheme="red"
+                onClick={onDelete}
+                ml={3}
+              >
                 Delete
               </Button>
             </AlertDialogFooter>
@@ -76,8 +81,8 @@ function RemoveButton({ feedbackId }) {
     </>
   );
 }
-export default RemoveButton;
+export default RemoveFeedbackButton;
 
-RemoveButton.propTypes = {
+RemoveFeedbackButton.propTypes = {
   feedbackId: PropTypes.string,
 };
