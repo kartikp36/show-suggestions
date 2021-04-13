@@ -34,7 +34,7 @@ const DashboardShell = ({ children }) => {
       >
         <Stack spacing={2} isInline ml={2} alignItems="center">
           <AddIcon m={2} />
-          <NextLink href="/dashboard " passHref>
+          <NextLink href="/sites " passHref>
             <Link
               p={2}
               m={2}

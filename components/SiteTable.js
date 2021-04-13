@@ -26,10 +26,22 @@ const SiteTable = ({ sites }) => {
             {sites.map((site) => {
               return (
                 <Box as="tr" key={site.id}>
-                  <Td fontWeight="medium">{site.name} </Td>
+                  <Td fontWeight="medium">
+                    <NextLink
+                      href="/site/[siteId]"
+                      as={`/site/${site.id}`}
+                      passHref
+                    >
+                      <Link fontWeight="medium">{site.name}</Link>
+                    </NextLink>
+                  </Td>
                   <Td>{site.url} </Td>
                   <Td>
-                    <NextLink href="/p/[siteId]" as={`/p/${site.id}`} passHref>
+                    <NextLink
+                      href="/feedback/[siteId]"
+                      as={`/feedback/${site.id}`}
+                      passHref
+                    >
                       <Link color="cyan.800" fontWeight="medium">
                         View Feedback
                       </Link>

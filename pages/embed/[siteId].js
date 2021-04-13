@@ -56,17 +56,16 @@ const SiteFeedback = ({ initialFeedback }) => {
     createFeedback(newFeedback);
   };
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      width="full"
-      maxWidth="700px"
-      margin="auto"
-    >
+    <Box display="flex" flexDirection="column" width="full">
       <Box as="form" onSubmit={handleSubmit}>
         <FormControl my={8}>
           <FormLabel htmlFor="comment">Comment</FormLabel>
-          <Input ref={inputElement} type="comment" id="comment" />
+          <Input
+            bgColor="white"
+            ref={inputElement}
+            type="comment"
+            id="comment"
+          />
           <Button mt={2} type="submit" fontWeight="medium">
             Add Comment
           </Button>
