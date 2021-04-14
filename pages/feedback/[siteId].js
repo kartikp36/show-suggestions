@@ -2,11 +2,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/breadcrumb';
+import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import Link from 'next/link';
 
 import SiteTableSkeleton from '../../components/SiteTableSkeleton';
@@ -45,7 +41,9 @@ const SiteFeedback = () => {
           </NextLink>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <BreadcrumbLink>{data.site.name}</BreadcrumbLink>
+          <NextLink href="/site/[siteId]" as={`/site/${query.siteId}`} passHref>
+            <Link fontWeight="medium">{data.site.name}</Link>
+          </NextLink>
         </BreadcrumbItem>
       </Breadcrumb>
       <Heading m={2}>{data.site.name}</Heading>

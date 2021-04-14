@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Code } from '@chakra-ui/layout';
 import { Td } from './Table';

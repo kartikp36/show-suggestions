@@ -6,7 +6,7 @@ import React from 'react';
 
 import { Table, Td, Th, Tr } from './Table';
 import AddSiteModal from './AddSiteModal';
-
+import RemoveSiteButton from './RemoveSiteButton';
 const SiteTable = ({ sites }) => {
   return (
     <>
@@ -48,6 +48,9 @@ const SiteTable = ({ sites }) => {
                     </NextLink>
                   </Td>
                   <Td>{format(parseISO(site.createdAt), 'PPpp')} </Td>
+                  <Td>
+                    <RemoveSiteButton siteId={site.id} />
+                  </Td>
                 </Box>
               );
             })}

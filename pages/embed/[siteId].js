@@ -7,13 +7,13 @@ import { Input } from '@chakra-ui/input';
 import { Box } from '@chakra-ui/layout';
 
 import Feedback from '../../components/Feedback';
-import { getAllFeedback, getAllSites } from '../../lib/db-admin';
+import { getActiveFeedback, getAllSites } from '../../lib/db-admin';
 import { createFeedback } from '../../lib/database';
 import { useAuth } from '../../lib/auth';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
-  const { feedback } = await getAllFeedback(siteId);
+  const { feedback } = await getActiveFeedback(siteId);
   return {
     props: {
       initialFeedback: feedback,
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   }));
 
   return {
-    paths: paths,
+    paths,
     fallback: true,
   };
 }
