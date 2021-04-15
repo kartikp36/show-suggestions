@@ -2,43 +2,29 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Button } from '@chakra-ui/button';
+import useSWR, { mutate } from 'swr';
+import fetcher from '../../utils/fetcher';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
 import { Box } from '@chakra-ui/layout';
 
 import Feedback from '../../components/Feedback';
-import { getAllFeedback, getAllSites } from '../../lib/db-admin';
 import { createFeedback } from '../../lib/database';
 import { useAuth } from '../../lib/auth';
 
-export async function getStaticProps(context) {
-  const siteId = context.params.siteId;
-  const { feedback } = await getAllFeedback(siteId);
-  return {
-    props: {
-      initialFeedback: feedback,
-    },
-    revalidate: 1,
-  };
-}
-
-export async function getStaticPaths() {
-  const { sites } = await getAllSites();
-  const paths = sites.map((site) => ({
-    params: { siteId: site.id.toString() },
-  }));
-
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}
-
-const SiteFeedback = ({ initialFeedback }) => {
+const SiteFeedback = () => {
   const auth = useAuth();
   const router = useRouter();
+  const siteId = router.query?.siteId;
   const inputElement = useRef(null);
-  const [allFeedback, setAllFeedback] = useState(initialFeedback);
+
+  const { data: siteData } = useSWR(`/api/p/${siteId}`, fetcher);
+  const { data: feedbackData } = useSWR(
+    auth.user ? [`/api/feedback/${siteId}`, auth.user?.token] : null,
+    fetcher
+  );
+  const site = siteData?.site;
+  const allFeedback = feedbackData?.feedback;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +37,15 @@ const SiteFeedback = ({ initialFeedback }) => {
       provider: auth.user.provider,
       status: 'pending',
     };
-    setAllFeedback([newFeedback, ...allFeedback]);
     createFeedback(newFeedback);
+    inputElement.current.value = '';
+    mutate(
+      [`/api/feedback/${siteId}`, auth.user.token],
+      async (data) => ({
+        feedback: [newFeedback, ...data.feedback],
+      }),
+      false
+    );
   };
   return (
     <Box
@@ -71,9 +64,10 @@ const SiteFeedback = ({ initialFeedback }) => {
           </Button>
         </FormControl>
       </Box>
-      {allFeedback.map((feedback) => (
-        <Feedback key={feedback.id} {...feedback} />
-      ))}
+      {allFeedback &&
+        allFeedback.map((feedback) => (
+          <Feedback key={feedback.id} {...feedback} />
+        ))}
     </Box>
   );
 };
