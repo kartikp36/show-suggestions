@@ -21,7 +21,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { useAuth } from '../lib/auth';
 
 const DashboardShell = ({ children }) => {
-  const { user, signout, signinWithGithub } = useAuth();
+  const { user, signout } = useAuth();
   return (
     <Flex flexDirection="column" backgroundColor="white">
       <Flex
@@ -34,7 +34,7 @@ const DashboardShell = ({ children }) => {
       >
         <Stack spacing={2} isInline ml={2} alignItems="center">
           <AddIcon m={2} />
-          <NextLink href="/dashboard " passHref>
+          <NextLink href="/sites " passHref>
             <Link
               p={2}
               m={2}
@@ -57,7 +57,17 @@ const DashboardShell = ({ children }) => {
           <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Account
           </Link>
-          {!user && <Button onClick={() => signinWithGithub()}>Sign In</Button>}
+          {!user && (
+            <NextLink href="/" passHref>
+              <Link
+                m={2}
+                p={2}
+                fontSize={{ base: '12px', md: '16px', lg: '16px' }}
+              >
+                Sign In
+              </Link>
+            </NextLink>
+          )}
           {user && (
             <Popover>
               <PopoverTrigger>

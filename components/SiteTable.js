@@ -6,40 +6,57 @@ import React from 'react';
 
 import { Table, Td, Th, Tr } from './Table';
 import AddSiteModal from './AddSiteModal';
-
+import RemoveSiteButton from './RemoveSiteButton';
 const SiteTable = ({ sites }) => {
   return (
     <>
       <AddSiteModal>Add Sites</AddSiteModal>
-      <Table>
-        <thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Site Link</Th>
-            <Th>Feedback Link</Th>
-            <Th>Date Added</Th>
-            <Th>{''}</Th>
-          </Tr>
-        </thead>
-        <tbody>
-          {sites.map((site) => {
-            return (
-              <Box as="tr" key={site.id}>
-                <Td fontWeight="medium">{site.name} </Td>
-                <Td>{site.url} </Td>
-                <Td>
-                  <NextLink href="/p/[siteId]" as={`/p/${site.id}`} passHref>
-                    <Link color="cyan.800" fontWeight="medium">
-                      View Feedback
-                    </Link>
-                  </NextLink>
-                </Td>
-                <Td>{format(parseISO(site.createdAt), 'PPpp')} </Td>
-              </Box>
-            );
-          })}
-        </tbody>
-      </Table>
+      <Box overflowX="scroll">
+        <Table w="full">
+          <thead>
+            <Tr>
+              <Th>Name</Th>
+              <Th>Site Link</Th>
+              <Th>Feedback Link</Th>
+              <Th>Date Added</Th>
+              <Th>{''}</Th>
+            </Tr>
+          </thead>
+          <tbody>
+            {sites.map((site) => {
+              return (
+                <Box as="tr" key={site.id}>
+                  <Td fontWeight="medium">
+                    <NextLink
+                      href="/site/[siteId]"
+                      as={`/site/${site.id}`}
+                      passHref
+                    >
+                      <Link fontWeight="medium">{site.name}</Link>
+                    </NextLink>
+                  </Td>
+                  <Td>{site.url} </Td>
+                  <Td>
+                    <NextLink
+                      href="/feedback/[siteId]"
+                      as={`/feedback/${site.id}`}
+                      passHref
+                    >
+                      <Link color="cyan.800" fontWeight="medium">
+                        View Feedback
+                      </Link>
+                    </NextLink>
+                  </Td>
+                  <Td>{format(parseISO(site.createdAt), 'PPpp')} </Td>
+                  <Td>
+                    <RemoveSiteButton siteId={site.id} />
+                  </Td>
+                </Box>
+              );
+            })}
+          </tbody>
+        </Table>
+      </Box>
     </>
   );
 };
