@@ -3,7 +3,7 @@ import { Heading, Box, Text } from '@chakra-ui/react';
 
 import AddSiteModal from './AddSiteModal';
 
-const Sites = () => {
+const SitesEmptyState = () => {
   return (
     <Box
       backgroundColor="white"
@@ -22,4 +22,4 @@ const Sites = () => {
     </Box>
   );
 };
-export default Sites;
+export default SitesEmptyState;

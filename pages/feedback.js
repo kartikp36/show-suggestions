@@ -7,6 +7,7 @@ import fetcher from '../utils/fetcher';
 import FeedbackTable from '../components/FeedbackTable';
 import { useAuth } from '../lib/auth';
 import Page from '../components/Page';
+import FeedbackEmptyState from '../components/FeedbackEmptyState';
 
 const MyFeedback = () => {
   const { user } = useAuth();
@@ -24,7 +25,11 @@ const MyFeedback = () => {
   return (
     <DashboardShell>
       <Heading m={2}>Your Feedbacks</Heading>
-      {data.feedback ? <FeedbackTable allFeedback={data.feedback} /> : null}
+      {data.feedback.length ? (
+        <FeedbackTable allFeedback={data.feedback} />
+      ) : (
+        <FeedbackEmptyState />
+      )}
     </DashboardShell>
   );
 };

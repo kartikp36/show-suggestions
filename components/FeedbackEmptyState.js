@@ -11,9 +11,9 @@ const FeedbackEmptyState = () => (
     direction="column"
   >
     <Heading size="lg" mb={2}>
-      {"There isn't any feedback."}
+      {"There isn't any feedback yet."}
     </Heading>
-    <Text mb={4}>{'Share your site!'}</Text>
+    <Text mb={4}>{'Give your feedback at any site!'}</Text>
   </Flex>
 );
 

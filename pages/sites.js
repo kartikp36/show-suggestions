@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
 
-import Sites from '../components/Sites';
+import SitesEmptyState from '../components/SitesEmptyState';
 import SiteTableSkeleton from '../components/SiteTableSkeleton';
 import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
@@ -25,7 +25,11 @@ const Dashboard = () => {
   return (
     <DashboardShell>
       <Heading m={2}>Your Saved Sites</Heading>
-      {data.sites ? <SiteTable sites={data.sites} /> : <Sites />}
+      {data.sites.length ? (
+        <SiteTable sites={data.sites} />
+      ) : (
+        <SitesEmptyState />
+      )}
     </DashboardShell>
   );
 };
