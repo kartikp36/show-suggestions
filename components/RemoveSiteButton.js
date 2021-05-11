@@ -57,9 +57,7 @@ function RemoveSiteButton({ siteId }) {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              {
-                "Are you sure? You can't undo this action. This will delete all of your feedback on site too."
-              }
+              {"Are you sure? You can't undo this action."}
             </AlertDialogBody>
 
             <AlertDialogFooter>

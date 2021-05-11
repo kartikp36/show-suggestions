@@ -35,6 +35,7 @@ const AddSiteModal = ({ children }) => {
       createdAt: new Date().toISOString(),
       name,
       url,
+      status: 'active',
     };
     const { id } = createSite(newSite);
 
