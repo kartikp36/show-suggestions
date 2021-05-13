@@ -34,13 +34,13 @@ const DashboardShell = ({ children }) => {
       >
         <Stack spacing={2} isInline ml={2} alignItems="center">
           <AddIcon m={2} />
-          <NextLink href="/sites " passHref>
+          <NextLink href="/list " passHref>
             <Link
               p={2}
               m={2}
               fontSize={{ base: '12px', md: '16px', lg: '16px' }}
             >
-              Sites
+              List
             </Link>
           </NextLink>
           <NextLink href="/feedback" passHref>

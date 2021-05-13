@@ -13,26 +13,26 @@ import { createFeedback } from '../../lib/database';
 import { useAuth } from '../../lib/auth';
 import fetcher from '../../utils/fetcher';
 
-const SiteFeedback = () => {
+const ShowFeedback = () => {
   const { user } = useAuth();
   const inputElement = useRef(null);
   const router = useRouter();
-  const siteId = router.query?.siteId;
-  const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher);
+  const showId = router.query?.showId;
+  const { data: showData } = useSWR(`/api/show/${showId}`, fetcher);
   const { data: feedbackData } = useSWR(
-    user ? [`/api/feedback/active/${siteId}`, user?.token] : null,
+    user ? [`/api/feedback/active/${showId}`, user?.token] : null,
     fetcher
   );
-  const site = siteData?.site;
+  const show = showData?.show;
   const allFeedback = feedbackData?.feedback;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newFeedback = {
-      siteAuthorId: site.authorId,
+      showAuthorId: show.authorId,
       author: user.name,
       authorId: user.uid,
-      siteId: router.query.siteId,
+      showId: router.query.showId,
       text: inputElement.current.value,
       createdAt: new Date().toISOString(),
       provider: user.provider,
@@ -41,7 +41,7 @@ const SiteFeedback = () => {
     createFeedback(newFeedback);
     inputElement.current.value = '';
     mutate(
-      [`/api/feedback/active/${siteId}`, user.token],
+      [`/api/feedback/active/${showId}`, user.token],
       async (data) => ({
         feedback: [newFeedback, ...data.feedback],
       }),
@@ -73,8 +73,8 @@ const SiteFeedback = () => {
     </DashboardShell>
   );
 };
-export default SiteFeedback;
+export default ShowFeedback;
 
-SiteFeedback.propTypes = {
+ShowFeedback.propTypes = {
   initialFeedback: PropTypes.array,
 };

@@ -21,13 +21,13 @@ const SkeletonRow = ({ width }) => (
   </Box>
 );
 
-const SiteTableSkeleton = () => {
+const ShowTableSkeleton = () => {
   return (
     <Table>
       <thead>
         <Tr>
           <Th>Name</Th>
-          <Th>Site Link</Th>
+          <Th>Show Link</Th>
           <Th>Feedback Link</Th>
           <Th>Date Added</Th>
           <Th>{''}</Th>
@@ -44,7 +44,7 @@ const SiteTableSkeleton = () => {
   );
 };
 
-export default SiteTableSkeleton;
+export default ShowTableSkeleton;
 
 SkeletonRow.propTypes = {
   width: PropTypes.string,

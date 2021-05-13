@@ -18,10 +18,10 @@ import {
   useToast,
 } from '@chakra-ui/react';
 
-import { createSite } from '../lib/database';
+import { createShow } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
-const AddSiteModal = ({ children }) => {
+const AddShowModal = ({ children }) => {
   const initialRef = useRef();
   const auth = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,26 +29,26 @@ const AddSiteModal = ({ children }) => {
 
   const { handleSubmit, register } = useForm();
 
-  const onAddSite = ({ name, url }) => {
-    const newSite = {
+  const onAddShow = ({ name, url }) => {
+    const newShow = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
       url,
       status: 'active',
     };
-    const { id } = createSite(newSite);
+    const { id } = createShow(newShow);
 
     toast({
       title: 'Success',
-      description: "We've added your site.",
+      description: "We've added your show.",
       status: 'success',
       duration: 4000,
       isClosable: true,
     });
     mutate(
-      ['/api/sites', auth.user.token],
-      async (data) => ({ sites: [{ id, ...newSite }, ...data.sites] }),
+      ['/api/list', auth.user.token],
+      async (data) => ({ shows: [{ id, ...newShow }, ...data.shows] }),
       false
     );
     onClose();
@@ -69,8 +69,8 @@ const AddSiteModal = ({ children }) => {
       </Button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent as="form" onSubmit={handleSubmit(onAddSite)}>
-          <ModalHeader fontWeight="bold">Add Sites</ModalHeader>
+        <ModalContent as="form" onSubmit={handleSubmit(onAddShow)}>
+          <ModalHeader fontWeight="bold">Add shows</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -80,7 +80,7 @@ const AddSiteModal = ({ children }) => {
                 {...register('name', {
                   required: 'Required',
                 })}
-                placeholder="My site"
+                placeholder="My show"
               />
             </FormControl>
 
@@ -91,7 +91,7 @@ const AddSiteModal = ({ children }) => {
                 {...register('url', {
                   required: 'Required',
                 })}
-                placeholder="https://website.com"
+                placeholder="https://my-show.com"
               />
             </FormControl>
           </ModalBody>
@@ -108,8 +108,8 @@ const AddSiteModal = ({ children }) => {
   );
 };
 
-export default AddSiteModal;
+export default AddShowModal;
 
-AddSiteModal.propTypes = {
+AddShowModal.propTypes = {
   children: PropTypes.node,
 };

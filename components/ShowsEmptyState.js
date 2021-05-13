@@ -1,9 +1,9 @@
 import React from 'react';
 import { Heading, Box, Text } from '@chakra-ui/react';
 
-import AddSiteModal from './AddSiteModal';
+import AddShowModal from './AddShowModal';
 
-const SitesEmptyState = () => {
+const ShowsEmptyState = () => {
   return (
     <Box
       backgroundColor="white"
@@ -15,11 +15,11 @@ const SitesEmptyState = () => {
       textAlign="center"
     >
       <Heading as="h3" size="md">
-        {`You haven't added any sites`}
+        {`There are no shows added yet`}
       </Heading>
-      <Text>Add Your First Site</Text>
-      <AddSiteModal>Add new site</AddSiteModal>
+      <Text>Be the first one here!</Text>
+      <AddShowModal>Add a new show</AddShowModal>
     </Box>
   );
 };
-export default SitesEmptyState;
+export default ShowsEmptyState;

@@ -1,41 +1,41 @@
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
 
-import SitesEmptyState from '../components/SitesEmptyState';
-import SiteTableSkeleton from '../components/SiteTableSkeleton';
+import ShowsEmptyState from '../components/ShowsEmptyState';
+import ShowTableSkeleton from '../components/ShowTableSkeleton';
 import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
-import SiteTable from '../components/SiteTable';
+import ShowTable from '../components/ShowTable';
 import { useAuth } from '../lib/auth';
 import Page from '../components/Page';
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher);
+  const { data } = useSWR(user ? ['/api/list', user.token] : null, fetcher);
 
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Saved Sites</Heading>
-        <SiteTableSkeleton />
+        <Heading m={2}>Home</Heading>
+        <ShowTableSkeleton />
       </DashboardShell>
     );
   }
 
   return (
     <DashboardShell>
-      <Heading m={2}>Your Saved Sites</Heading>
-      {data.sites.length ? (
-        <SiteTable sites={data.sites} />
+      <Heading m={2}>Home</Heading>
+      {data.shows.length ? (
+        <ShowTable shows={data.shows} />
       ) : (
-        <SitesEmptyState />
+        <ShowsEmptyState />
       )}
     </DashboardShell>
   );
 };
 const DashboardPage = () => (
-  <Page name="Feedback" path="/sites">
-    <Dashboard />
+  <Page name="Feedback" path="list">
+    <Dashboard />l
   </Page>
 );
 export default DashboardPage;

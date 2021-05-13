@@ -5,7 +5,7 @@ import { Heading } from '@chakra-ui/layout';
 import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import Link from 'next/link';
 
-import SiteTableSkeleton from '../../components/SiteTableSkeleton';
+import ShowTableSkeleton from '../../components/ShowTableSkeleton';
 import Page from '../../components/Page';
 import DashboardShell from '../../components/DashboardShell';
 import fetcher from '../../utils/fetcher';
@@ -13,11 +13,11 @@ import FeedbackTable from '../../components/FeedbackTable';
 import { useAuth } from '../../lib/auth';
 import FeedbackEmptyState from '../../components/FeedbackEmptyState';
 
-const SiteFeedback = () => {
+const ShowFeedback = () => {
   const { user } = useAuth();
   const { query } = useRouter();
   const { data } = useSWR(
-    user ? [`/api/feedback/${query.siteId}`, user.token] : null,
+    user ? [`/api/feedback/${query.showId}`, user.token] : null,
     fetcher
   );
 
@@ -25,7 +25,7 @@ const SiteFeedback = () => {
     return (
       <DashboardShell>
         <Heading m={2}>Your Feedbacks</Heading>
-        <SiteTableSkeleton />
+        <ShowTableSkeleton />
       </DashboardShell>
     );
   }
@@ -41,12 +41,12 @@ const SiteFeedback = () => {
           </NextLink>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <NextLink href="/site/[siteId]" as={`/site/${query.siteId}`} passHref>
-            <Link fontWeight="medium">{data.site.name}</Link>
+          <NextLink href="/show/[showId]" as={`/show/${query.showId}`} passHref>
+            <Link fontWeight="medium">{data.show.name}</Link>
           </NextLink>
         </BreadcrumbItem>
       </Breadcrumb>
-      <Heading m={2}>{data.site.name}</Heading>
+      <Heading m={2}>{data.show.name}</Heading>
       {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
@@ -55,9 +55,9 @@ const SiteFeedback = () => {
     </DashboardShell>
   );
 };
-const SiteFeedbackPage = () => (
+const ShowFeedbackPage = () => (
   <Page name="My Feedback" path={`/feedback/${null}`}>
-    <SiteFeedback />
+    <ShowFeedback />
   </Page>
 );
-export default SiteFeedbackPage;
+export default ShowFeedbackPage;

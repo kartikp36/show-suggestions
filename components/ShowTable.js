@@ -5,41 +5,41 @@ import { format, parseISO } from 'date-fns';
 import React from 'react';
 
 import { Table, Td, Th, Tr } from './Table';
-import AddSiteModal from './AddSiteModal';
-import RemoveSiteButton from './RemoveSiteButton';
-const SiteTable = ({ sites }) => {
+import AddShowModal from './AddShowModal';
+import RemoveShowButton from './RemoveShowButton';
+const ShowTable = ({ shows }) => {
   return (
     <>
-      <AddSiteModal>Add Sites</AddSiteModal>
+      <AddShowModal>Add Shows</AddShowModal>
       <Box overflowX="scroll">
         <Table w="full">
           <thead>
             <Tr>
               <Th>Name</Th>
-              <Th>Site Link</Th>
+              <Th>Show Link</Th>
               <Th>Feedback Link</Th>
               <Th>Date Added</Th>
               <Th>{''}</Th>
             </Tr>
           </thead>
           <tbody>
-            {sites.map((site) => {
+            {shows.map((show) => {
               return (
-                <Box as="tr" key={site.id}>
+                <Box as="tr" key={show.id}>
                   <Td fontWeight="medium">
                     <NextLink
-                      href="/site/[siteId]"
-                      as={`/site/${site.id}`}
+                      href="/show/[showId]"
+                      as={`/show/${show.id}`}
                       passHref
                     >
-                      <Link fontWeight="medium">{site.name}</Link>
+                      <Link fontWeight="medium">{show.name}</Link>
                     </NextLink>
                   </Td>
-                  <Td>{site.url} </Td>
+                  <Td>{show.url} </Td>
                   <Td>
                     <NextLink
-                      href="/feedback/[siteId]"
-                      as={`/feedback/${site.id}`}
+                      href="/feedback/[showId]"
+                      as={`/feedback/${show.id}`}
                       passHref
                     >
                       <Link color="cyan.800" fontWeight="medium">
@@ -47,9 +47,9 @@ const SiteTable = ({ sites }) => {
                       </Link>
                     </NextLink>
                   </Td>
-                  <Td>{format(parseISO(site.createdAt), 'PPpp')} </Td>
+                  <Td>{format(parseISO(show.createdAt), 'PPpp')} </Td>
                   <Td>
-                    <RemoveSiteButton siteId={site.id} />
+                    <RemoveShowButton showId={show.id} />
                   </Td>
                 </Box>
               );
@@ -61,8 +61,8 @@ const SiteTable = ({ sites }) => {
   );
 };
 
-export default SiteTable;
+export default ShowTable;
 
-SiteTable.propTypes = {
-  sites: PropTypes.array,
+ShowTable.propTypes = {
+  shows: PropTypes.array,
 };

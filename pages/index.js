@@ -11,7 +11,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{
             __html: `
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
-            window.location.href = "/sites"
+            window.location.href = "/list"
           }
         `,
           }}
@@ -47,7 +47,7 @@ export default function Home() {
         ) : (
           <Button
             as="a"
-            href="/sites"
+            href="/list"
             w="20%"
             backgroundColor="white"
             color="gray.900"
@@ -55,7 +55,7 @@ export default function Home() {
             size="lg"
             _hover={{ bg: 'gray.100' }}
           >
-            View Sites
+            View Shows
           </Button>
         )}
       </main>

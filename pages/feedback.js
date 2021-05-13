@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
 
-import SiteTableSkeleton from '../components/SiteTableSkeleton';
+import ShowTableSkeleton from '../components/ShowTableSkeleton';
 import DashboardShell from '../components/DashboardShell';
 import fetcher from '../utils/fetcher';
 import FeedbackTable from '../components/FeedbackTable';
@@ -17,7 +17,7 @@ const MyFeedback = () => {
     return (
       <DashboardShell>
         <Heading m={2}>Your Feedbacks</Heading>
-        <SiteTableSkeleton />
+        <ShowTableSkeleton />
       </DashboardShell>
     );
   }

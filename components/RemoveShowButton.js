@@ -13,22 +13,22 @@ import {
 } from '@chakra-ui/react';
 import { mutate } from 'swr';
 
-import { deleteSite } from '../lib/database';
+import { deleteShow } from '../lib/database';
 import { useAuth } from '../lib/auth';
 
-function RemoveSiteButton({ siteId }) {
+function RemoveShowButton({ showId }) {
   const auth = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
 
   const onDelete = () => {
-    deleteSite(siteId);
+    deleteShow(showId);
     mutate(
-      ['/api/sites', auth.user.token],
+      ['/api/list', auth.user.token],
       async (data) => {
         return {
-          sites: data.sites.filter((site) => site.id !== siteId),
+          shows: data.shows.filter((show) => show.id !== showId),
         };
       },
       false
@@ -53,7 +53,7 @@ function RemoveSiteButton({ siteId }) {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              {'Delete Site'}
+              {'Delete Show'}
             </AlertDialogHeader>
 
             <AlertDialogBody>
@@ -79,8 +79,8 @@ function RemoveSiteButton({ siteId }) {
     </>
   );
 }
-export default RemoveSiteButton;
+export default RemoveShowButton;
 
-RemoveSiteButton.propTypes = {
-  siteId: PropTypes.string,
+RemoveShowButton.propTypes = {
+  showId: PropTypes.string,
 };

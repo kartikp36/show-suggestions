@@ -1,12 +1,12 @@
-import { getActiveFeedback, getSite } from '../../../../lib/db-admin';
+import { getActiveFeedback, getShow } from '../../../../lib/db-admin';
 
 export default async (req, res) => {
-  const siteId = req.query.siteId;
+  const showId = req.query.showId;
 
-  const { feedback, error } = await getActiveFeedback(siteId);
-  const { site } = await getSite(siteId);
+  const { feedback, error } = await getActiveFeedback(showId);
+  const { show } = await getShow(showId);
   if (error) {
     res, status(500).json({ error });
   }
-  res.status(200).json({ feedback, site });
+  res.status(200).json({ feedback, show });
 };
