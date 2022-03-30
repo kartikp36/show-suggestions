@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { mutate } from 'swr';
 import {
   Modal,
@@ -16,6 +16,9 @@ import {
   Input,
   useDisclosure,
   useToast,
+  Radio,
+  RadioGroup,
+  Stack,
 } from '@chakra-ui/react';
 
 import { createShow } from '../lib/database';
@@ -27,14 +30,17 @@ const AddShowModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
-  const { handleSubmit, register } = useForm();
-
-  const onAddShow = ({ name, url }) => {
+  const { handleSubmit, register, control } = useForm();
+  const onAddShow = ({ name, type, genre }) => {
+    console.log(type);
     const newShow = {
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
-      url,
+      type: `Movie`,
+      genre,
+      upVotes: [],
+      downVotes: [],
       status: 'active',
     };
     const { id } = createShow(newShow);
@@ -85,13 +91,40 @@ const AddShowModal = ({ children }) => {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Link</FormLabel>
+              <FormLabel>{`It's a`} </FormLabel>
+
+              {/* <RadioGroup name="type" defaultValue="Movie">
+                <Stack direction="row">
+                  <Radio value="Movie">Movie</Radio>
+                  <Radio value="Series">Series</Radio>
+                </Stack>
+              </RadioGroup> */}
+
+              {/* <Controller
+                as={
+                  <RadioGroup
+                    aria-label="type"
+                    // ref={register()}
+                    name="type"
+                    defaultValue="Movie"
+                    isInline
+                  >
+                    <Radio value="Movie">Movie</Radio>
+                    <Radio value="Series">Series</Radio>
+                  </RadioGroup>
+                }
+                name="type"
+                control={control}
+              /> */}
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Genre</FormLabel>
               <Input
-                name="url"
-                {...register('url', {
+                name="genre"
+                {...register('genre', {
                   required: 'Required',
                 })}
-                placeholder="https://my-show.com"
+                placeholder="Comedy"
               />
             </FormControl>
           </ModalBody>

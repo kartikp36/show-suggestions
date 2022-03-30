@@ -26,8 +26,9 @@ const ShowTableSkeleton = () => {
     <Table>
       <thead>
         <Tr>
-          <Th>Name</Th>
-          <Th>Show Link</Th>
+          <Th>Show Name</Th>
+          <Th>Movie/Series</Th>
+          <Th>Genre</Th>
           <Th>Feedback Link</Th>
           <Th>Date Added</Th>
           <Th>{''}</Th>

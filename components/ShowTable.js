@@ -1,13 +1,22 @@
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { Box, Link } from '@chakra-ui/layout';
+import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
+import { Button } from '@chakra-ui/react';
 import { format, parseISO } from 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
+import pull from 'lodash';
 
 import { Table, Td, Th, Tr } from './Table';
 import AddShowModal from './AddShowModal';
-import RemoveShowButton from './RemoveShowButton';
+import { updateShow, updateUser } from '../lib/database';
+import { useAuth } from '../lib/auth';
+import { mutate } from 'swr';
+import ShowRow from './ShowRow';
+
 const ShowTable = ({ shows }) => {
+  const { user } = useAuth();
+
   return (
     <>
       <AddShowModal>Add Shows</AddShowModal>
@@ -15,45 +24,19 @@ const ShowTable = ({ shows }) => {
         <Table w="full">
           <thead>
             <Tr>
-              <Th>Name</Th>
-              <Th>Show Link</Th>
+              <Th>Show Name</Th>
+              <Th>Movie/Series</Th>
+              <Th>Genre</Th>
               <Th>Feedback Link</Th>
               <Th>Date Added</Th>
-              <Th>{''}</Th>
+              <Th>Upvotes</Th>
+              <Th>Downvotes</Th>
             </Tr>
           </thead>
           <tbody>
-            {shows.map((show) => {
-              return (
-                <Box as="tr" key={show.id}>
-                  <Td fontWeight="medium">
-                    <NextLink
-                      href="/show/[showId]"
-                      as={`/show/${show.id}`}
-                      passHref
-                    >
-                      <Link fontWeight="medium">{show.name}</Link>
-                    </NextLink>
-                  </Td>
-                  <Td>{show.url} </Td>
-                  <Td>
-                    <NextLink
-                      href="/feedback/[showId]"
-                      as={`/feedback/${show.id}`}
-                      passHref
-                    >
-                      <Link color="cyan.800" fontWeight="medium">
-                        View Feedback
-                      </Link>
-                    </NextLink>
-                  </Td>
-                  <Td>{format(parseISO(show.createdAt), 'PPpp')} </Td>
-                  <Td>
-                    <RemoveShowButton showId={show.id} />
-                  </Td>
-                </Box>
-              );
-            })}
+            {shows.map((show) => (
+              <ShowRow key={show.id} show={show} user={user} />
+            ))}
           </tbody>
         </Table>
       </Box>

@@ -1,6 +1,6 @@
-const fetcher = async (url, token) => {
+const fetcher = async (genre, token) => {
   try {
-    const res = await fetch(url, {
+    const res = await fetch(genre, {
       method: 'GET',
       headers: new Headers({ 'Content-Type': 'application/json', token }),
       credentials: 'same-origin',

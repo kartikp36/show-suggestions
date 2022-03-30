@@ -35,7 +35,7 @@ const Dashboard = () => {
 };
 const DashboardPage = () => (
   <Page name="Feedback" path="list">
-    <Dashboard />l
+    <Dashboard />
   </Page>
 );
 export default DashboardPage;
