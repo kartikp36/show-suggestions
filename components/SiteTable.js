@@ -19,7 +19,7 @@ const SiteTable = ({ sites }) => {
               <Th>Genre</Th>
               <Th>Comment Link</Th>
               <Th>Date Added</Th>
-              <Th>{''}</Th>
+              {/* <Th>{''}</Th> */}
             </Tr>
           </thead>
           <tbody>
@@ -48,9 +48,9 @@ const SiteTable = ({ sites }) => {
                     </NextLink>
                   </Td>
                   <Td>{format(parseISO(site.createdAt), 'PPpp')} </Td>
-                  <Td>
+                  {/* <Td>
                     <RemoveSiteButton siteId={site.id} />
-                  </Td>
+                  </Td> */}
                 </Box>
               );
             })}

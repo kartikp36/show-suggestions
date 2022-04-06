@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import { Heading } from '@chakra-ui/layout';
+import { Tooltip, WrapItem, Button } from '@chakra-ui/react';
 
 import SitesEmptyState from '../components/SitesEmptyState';
 import SiteTableSkeleton from '../components/SiteTableSkeleton';
@@ -23,7 +24,15 @@ const Dashboard = () => {
   } else {
     return (
       <DashboardShell>
-        <Heading m={2}>Shows</Heading>
+        <WrapItem>
+          <Tooltip
+            label="Click on show names to comment about that show"
+            placement="left"
+            defaultIsOpen
+          >
+            <Heading m={2}>Shows</Heading>
+          </Tooltip>
+        </WrapItem>
         {data?.sites.length ? (
           <SiteTable sites={data.sites} />
         ) : (
