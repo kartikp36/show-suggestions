@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Heading, Text, Divider, Flex } from '@chakra-ui/react';
+import { Box, Heading, Text, Divider, Flex, Avatar } from '@chakra-ui/react';
 import { format, parseISO } from 'date-fns';
 
-const Feedback = ({ author, text, createdAt }) => {
+const Feedback = ({ author, text, createdAt, photoUrl }) => {
   return (
     <Box borderRadius={4} maxWidth="700px" w="full">
       <Flex align="center">
+        <Avatar size="md" m={2} src={photoUrl} />
         <Heading size="sm" as="h3" mb={2} fontWeight="medium">
           {author}
         </Heading>

@@ -10,14 +10,14 @@ import RemoveSiteButton from './RemoveSiteButton';
 const SiteTable = ({ sites }) => {
   return (
     <>
-      <AddSiteModal>Add Sites</AddSiteModal>
+      <AddSiteModal>Add Shows</AddSiteModal>
       <Box overflowX="scroll">
         <Table w="full">
           <thead>
             <Tr>
               <Th>Name</Th>
-              <Th>Site Link</Th>
-              <Th>Feedback Link</Th>
+              <Th>Genre</Th>
+              <Th>Comment Link</Th>
               <Th>Date Added</Th>
               <Th>{''}</Th>
             </Tr>
@@ -43,7 +43,7 @@ const SiteTable = ({ sites }) => {
                       passHref
                     >
                       <Link color="cyan.800" fontWeight="medium">
-                        View Feedback
+                        View Comment
                       </Link>
                     </NextLink>
                   </Td>

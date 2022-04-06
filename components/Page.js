@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { NextSeo } from 'next-seo';
 
 const Page = ({ name, path, children }) => {
-  const title = `Fast Feedback – ${name}`;
+  const title = `Show suggestions – ${name}`;
   const url = `https://fast-feedback-wine.vercel.app${path}`;
 
   return (

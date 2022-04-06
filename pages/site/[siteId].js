@@ -6,6 +6,8 @@ import { Button } from '@chakra-ui/button';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
 import { Box } from '@chakra-ui/layout';
+import { Heading, Avatar, Flex, Text } from '@chakra-ui/react';
+import { format, parseISO } from 'date-fns';
 
 import Feedback from '../../components/Feedback';
 import DashboardShell from '../../components/DashboardShell';
@@ -32,6 +34,7 @@ const SiteFeedback = () => {
       siteAuthorId: site.authorId,
       author: user.name,
       authorId: user.uid,
+      photoUrl: user.photoUrl,
       siteId: router.query.siteId,
       text: inputElement.current.value,
       createdAt: new Date().toISOString(),
@@ -58,6 +61,19 @@ const SiteFeedback = () => {
         margin="auto"
       >
         <Box as="form" onSubmit={handleSubmit}>
+          <Heading size="xl" as="h2" my={2} fontWeight="medium">
+            {site?.name}
+          </Heading>
+          <Flex align="center">
+            <Heading size="md" as="h2" mb={2} fontWeight="semibold">
+              Posted by {site?.author}
+            </Heading>
+            <Avatar size="md" m={2} src={user?.photoUrl} />
+            <Text color="gray.500" mb={2} fontSize="md">
+              {` on `}
+              {site ? format(parseISO(site?.createdAt), 'PPpp') : null}
+            </Text>
+          </Flex>
           <FormControl my={8}>
             <FormLabel htmlFor="comment">Comment</FormLabel>
             <Input

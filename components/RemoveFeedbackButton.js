@@ -42,7 +42,7 @@ function RemoveFeedbackButton({ feedbackId }) {
     <>
       <IconButton
         onClick={() => setIsOpen(true)}
-        aria-label="Delete Feedback"
+        aria-label="Delete Comment"
         icon={<DeleteIcon />}
         variant="ghost"
       />
@@ -55,7 +55,7 @@ function RemoveFeedbackButton({ feedbackId }) {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              {'Delete Feedback'}
+              {'Delete Comment'}
             </AlertDialogHeader>
 
             <AlertDialogBody>

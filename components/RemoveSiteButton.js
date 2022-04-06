@@ -40,7 +40,7 @@ function RemoveSiteButton({ siteId }) {
     <>
       <IconButton
         onClick={() => setIsOpen(true)}
-        aria-label="Delete Feedback"
+        aria-label="Delete Show"
         icon={<DeleteIcon />}
         variant="ghost"
       />
@@ -53,7 +53,7 @@ function RemoveSiteButton({ siteId }) {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              {'Delete Site'}
+              {'Delete Show'}
             </AlertDialogHeader>
 
             <AlertDialogBody>

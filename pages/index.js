@@ -18,7 +18,7 @@ export default function Home() {
         />
       </Head>
       <main style={{ textAlign: 'center', margin: '8px' }}>
-        <Heading>Fast Feedback</Heading>
+        <Heading>Show suggestions</Heading>
         {!auth?.user ? (
           <Stack mt="4" alignItems="center">
             <Button
@@ -55,7 +55,7 @@ export default function Home() {
             size="lg"
             _hover={{ bg: 'gray.100' }}
           >
-            View Sites
+            Take me to Homepage
           </Button>
         )}
       </main>

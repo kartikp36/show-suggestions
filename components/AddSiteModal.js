@@ -31,6 +31,7 @@ const AddSiteModal = ({ children }) => {
 
   const onAddSite = ({ name, url }) => {
     const newSite = {
+      author: auth.user.name,
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
@@ -41,7 +42,7 @@ const AddSiteModal = ({ children }) => {
 
     toast({
       title: 'Success',
-      description: "We've added your site.",
+      description: "We've added your show.",
       status: 'success',
       duration: 4000,
       isClosable: true,
@@ -70,7 +71,7 @@ const AddSiteModal = ({ children }) => {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onAddSite)}>
-          <ModalHeader fontWeight="bold">Add Sites</ModalHeader>
+          <ModalHeader fontWeight="bold">Add show</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -80,18 +81,18 @@ const AddSiteModal = ({ children }) => {
                 {...register('name', {
                   required: 'Required',
                 })}
-                placeholder="My site"
+                placeholder="F.R.I.E.N.D.S."
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Link</FormLabel>
+              <FormLabel>Genre: </FormLabel>
               <Input
                 name="url"
                 {...register('url', {
                   required: 'Required',
                 })}
-                placeholder="https://website.com"
+                placeholder="Sitcom"
               />
             </FormControl>
           </ModalBody>

@@ -23,9 +23,6 @@ const FeedbackRow = ({ id, author, text, status, route }) => {
     <Box as="tr" key={id}>
       <Td fontWeight="medium">{author} </Td>
       <Td>{text} </Td>
-      <Td>
-        <Code>{route || '/'}</Code>
-      </Td>
       <Switch
         colorScheme="green"
         mt={4}

@@ -16,7 +16,7 @@ const Dashboard = () => {
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Saved Sites</Heading>
+        <Heading m={2}>Shows posted by you</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   return (
     <DashboardShell>
-      <Heading m={2}>Your Saved Sites</Heading>
+      <Heading m={2}>Shows posted by you</Heading>
       {data.sites.length ? (
         <SiteTable sites={data.sites} />
       ) : (
