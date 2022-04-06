@@ -61,19 +61,23 @@ const SiteFeedback = () => {
         margin="auto"
       >
         <Box as="form" onSubmit={handleSubmit}>
-          <Heading size="xl" as="h2" my={2} fontWeight="medium">
-            {site?.name}
-          </Heading>
-          <Flex align="center">
-            <Heading size="md" as="h2" mb={2} fontWeight="semibold">
-              Posted by {site?.author}
-            </Heading>
-            <Avatar size="md" m={2} src={site?.photoUrl} />
-            <Text color="gray.500" mb={2} fontSize="md">
-              {` on `}
-              {site ? format(parseISO(site?.createdAt), 'PPpp') : null}
-            </Text>
-          </Flex>
+          {site ? (
+            <>
+              <Heading size="xl" as="h2" my={2} fontWeight="medium">
+                {site?.name}
+              </Heading>
+              <Flex align="center">
+                <Heading size="md" as="h2" mb={2} fontWeight="semibold">
+                  Posted by {site?.author}
+                </Heading>
+                <Avatar size="md" m={2} src={site?.photoUrl} />
+                <Text color="gray.500" mb={2} fontSize="md">
+                  {` on `}
+                  {format(parseISO(site?.createdAt), 'PPpp')}
+                </Text>
+              </Flex>
+            </>
+          ) : null}
           <FormControl my={8}>
             <FormLabel htmlFor="comment">Comment</FormLabel>
             <Input
