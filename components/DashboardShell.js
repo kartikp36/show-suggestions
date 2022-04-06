@@ -40,7 +40,7 @@ const DashboardShell = ({ children }) => {
               m={2}
               fontSize={{ base: '12px', md: '16px', lg: '16px' }}
             >
-              Sites
+              Shows
             </Link>
           </NextLink>
           <NextLink href="/feedback" passHref>
@@ -49,14 +49,14 @@ const DashboardShell = ({ children }) => {
               p={2}
               fontSize={{ base: '12px', md: '16px', lg: '16px' }}
             >
-              Feedback
+              Comments
             </Link>
           </NextLink>
         </Stack>
         <Flex mr={2} alignItems="center">
-          <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
+          {/* <Link m={2} p={2} fontSize={{ base: '12px', md: '16px', lg: '16px' }}>
             Account
-          </Link>
+          </Link> */}
           {!user && (
             <NextLink href="/" passHref>
               <Link

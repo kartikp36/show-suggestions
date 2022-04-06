@@ -15,10 +15,10 @@ const SitesEmptyState = () => {
       textAlign="center"
     >
       <Heading as="h3" size="md">
-        {`You haven't added any sites`}
+        {`You haven't added any Shows`}
       </Heading>
-      <Text>Add Your First Site</Text>
-      <AddSiteModal>Add new site</AddSiteModal>
+      <Text>Add your favourite show!</Text>
+      <AddSiteModal>Add new show</AddSiteModal>
     </Box>
   );
 };

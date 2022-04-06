@@ -24,7 +24,7 @@ const SiteFeedback = () => {
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Feedbacks</Heading>
+        <Heading m={2}>Your comments</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
@@ -36,7 +36,7 @@ const SiteFeedback = () => {
         <BreadcrumbItem>
           <NextLink href="/feedback" passHref>
             <Link color="cyan.800" fontWeight="medium">
-              Feedback
+              Comments
             </Link>
           </NextLink>
         </BreadcrumbItem>

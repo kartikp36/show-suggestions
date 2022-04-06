@@ -12,8 +12,7 @@ const FeedbackTable = ({ allFeedback }) => {
         <thead>
           <Tr>
             <Th>Name</Th>
-            <Th>Feedback</Th>
-            <Th>Route</Th>
+            <Th>Comment</Th>
             <Th>Visible</Th>
             <Th>{''}</Th>
           </Tr>

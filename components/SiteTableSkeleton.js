@@ -27,8 +27,8 @@ const SiteTableSkeleton = () => {
       <thead>
         <Tr>
           <Th>Name</Th>
-          <Th>Site Link</Th>
-          <Th>Feedback Link</Th>
+          <Th>Genre</Th>
+          <Th>Comment Link</Th>
           <Th>Date Added</Th>
           <Th>{''}</Th>
         </Tr>

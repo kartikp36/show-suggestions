@@ -16,22 +16,22 @@ const Dashboard = () => {
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Saved Sites</Heading>
+        <Heading m={2}>Shows posted by you</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
+  } else {
+    return (
+      <DashboardShell>
+        <Heading m={2}>Shows posted by you</Heading>
+        {data?.sites.length ? (
+          <SiteTable sites={data.sites} />
+        ) : (
+          <SitesEmptyState />
+        )}
+      </DashboardShell>
+    );
   }
-
-  return (
-    <DashboardShell>
-      <Heading m={2}>Your Saved Sites</Heading>
-      {data.sites.length ? (
-        <SiteTable sites={data.sites} />
-      ) : (
-        <SitesEmptyState />
-      )}
-    </DashboardShell>
-  );
 };
 const DashboardPage = () => (
   <Page name="Feedback" path="/sites">

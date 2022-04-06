@@ -1,5 +1,5 @@
-const title = 'Fast Feedback';
-const description = 'Fast Feedback';
+const title = ' Show suggestions';
+const description = 'Show suggestions';
 
 const SEO = {
   title,

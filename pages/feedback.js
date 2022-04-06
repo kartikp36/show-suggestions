@@ -16,7 +16,7 @@ const MyFeedback = () => {
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Your Feedbacks</Heading>
+        <Heading m={2}>Your comments</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
@@ -24,7 +24,7 @@ const MyFeedback = () => {
 
   return (
     <DashboardShell>
-      <Heading m={2}>Your Feedbacks</Heading>
+      <Heading m={2}>Your comments</Heading>
       {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
