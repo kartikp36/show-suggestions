@@ -16,14 +16,14 @@ const Dashboard = () => {
   if (!data) {
     return (
       <DashboardShell>
-        <Heading m={2}>Shows posted by you</Heading>
+        <Heading m={2}>Shows</Heading>
         <SiteTableSkeleton />
       </DashboardShell>
     );
   } else {
     return (
       <DashboardShell>
-        <Heading m={2}>Shows posted by you</Heading>
+        <Heading m={2}>Shows</Heading>
         {data?.sites.length ? (
           <SiteTable sites={data.sites} />
         ) : (
