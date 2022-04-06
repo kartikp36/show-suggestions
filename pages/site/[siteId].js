@@ -68,7 +68,7 @@ const SiteFeedback = () => {
             <Heading size="md" as="h2" mb={2} fontWeight="semibold">
               Posted by {site?.author}
             </Heading>
-            <Avatar size="md" m={2} src={user?.photoUrl} />
+            <Avatar size="md" m={2} src={site?.photoUrl} />
             <Text color="gray.500" mb={2} fontSize="md">
               {` on `}
               {site ? format(parseISO(site?.createdAt), 'PPpp') : null}

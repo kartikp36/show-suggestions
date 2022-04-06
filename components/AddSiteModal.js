@@ -32,6 +32,7 @@ const AddSiteModal = ({ children }) => {
   const onAddSite = ({ name, url }) => {
     const newSite = {
       author: auth.user.name,
+      photoUrl: auth.user.photoUrl,
       authorId: auth.user.uid,
       createdAt: new Date().toISOString(),
       name,
