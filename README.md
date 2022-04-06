@@ -1,9 +1,8 @@
 # Fast Feedback
 
-### This project is deployed at: https://fast-feedback-wine.vercel.app/
+Bored of spending hours to find what show to watch today? head to **https://show-suggestions.vercel.app/**.
 
-This is a project made by following [Lee Robinson](https://github.com/leerob)'s [React 2025](https://react2025.com) course for learning purpose only. It is **not** a product/service. To check it out, just head to **https://fast-feedback-wine.vercel.app/**.
-
+This is a project made by following [Lee Robinson](https://github.com/leerob)'s [React 2025](https://react2025.com) course for learning purpose only. It is **not** a product/service rather just a project.
 ## Built Using
 
 - [Next.js](https://nextjs.org/)
