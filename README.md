@@ -1,4 +1,4 @@
-# Fast Feedback
+# Show Suggestions
 
 Bored of spending hours to find what show to watch today? head to **https://show-suggestions.vercel.app/**.
 
